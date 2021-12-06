@@ -7,63 +7,12 @@ namespace CoffeeMachine
 {
     public class CoffeeMachineGame
     {
-        private Order _customerOrder;
-
-        public bool VerifyInstruction(Order customerOrder)
-        {
-            if (HasOrderedDrink(customerOrder) && HasOrderedSugar(customerOrder))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-       
-
-        public bool HasOrderedDrink(Order customerOrder)
-        {
-            var drink = customerOrder.getDrink();
-            Regex r = new Regex ("T|C|H");
-            return  r.IsMatch (drink);
-        }
-        
-        
-        
-        public bool HasOrderedSugar(Order customerOrder)
-        {
-            var sugar = customerOrder.getSugar();
-            Regex r = new Regex ("1|2");
-            return  r.IsMatch (sugar);
-        }
-       
-
-        public Order AddStick(Order customerOrder)
-        {
-            if (HasOrderedSugar(customerOrder))
-            {
-                customerOrder.UpdateStickField();
-               
-            }
-            return customerOrder;
-        }
-
-        public bool HasStick(Order customerOrder)
-        {
-            if (HasOrderedSugar(customerOrder))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        private Drink ConvertOrderToDrink(Order customerOrder)
+        private Drink ConvertOrderToDrink(IOrder customerOrder)
         {
             double price = 0.0;
             string name = "";
             
-            var drink = customerOrder.getDrink();
+            var drink = customerOrder.GetDrink();
             if (drink == "C")
             {
                 price = 0.6;
@@ -79,11 +28,25 @@ namespace CoffeeMachine
                 price = 0.5;
                 name = "Hot Chocolate";
             }
+            if (drink == "O")
+            {
+                price = 0.6;
+                name = "Orange Juice";
+            }
 
             return new Drink(name, price);
         }
+        public bool VerifyInstruction(IOrder customerOrder)
+        {
+            if (customerOrder.HasOrderedDrink() && customerOrder.HasOrderedSugar())
+            {
+                return true;
+            }
+
+            return false;
+        }
         
-        public bool VerifyAmountIsPaid(Order customerOrder, double price, double amount)
+        public bool VerifyAmountIsPaid(IOrder customerOrder, double price, double amount)
         {
             if (amount >= price)
             {
@@ -92,19 +55,18 @@ namespace CoffeeMachine
 
             return false;
         }
+        
 
-
-
-        public Drink TakeOrder(Order order, double money)
+        public Drink TakeOrder(IOrder customerOrder, double money)
         {
-            Drink drink = this.ConvertOrderToDrink(order);
+            Drink Drink = this.ConvertOrderToDrink(customerOrder);
             
-            if (money < drink.GetPrice())
+            if (money < Drink.GetPrice())
             {
                 throw new InvalidMoneyException("Not Enough Money");
             }
 
-            return drink;
+            return Drink;
         }
         
     }
