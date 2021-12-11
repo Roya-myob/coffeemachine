@@ -6,17 +6,31 @@ namespace CoffeeMachineTests
 {
     public class CoffeeMachineTest
     {
-        #region Iteration One
+       // #region Iteration One
         [Theory]
-        [InlineData("C","0")]
-    //    [InlineData("T","1")]
-     //   [InlineData("H","2")]
+        //[InlineData("C","0")]
+        [InlineData("T","1")]
+        [InlineData("H","2")]
         public void DrinkMaker_Receive_Correct_Instructions_For_Drink_Order(string drink, string sugar)
         {
             CoffeeMachineGame coffeeMachine = new CoffeeMachineGame();
-            var result = coffeeMachine.VerifyInstruction(new Order(drink,sugar));
+            
+            var result= coffeeMachine.VerifyInstruction(new HotOrder(drink, sugar));
+            
+            // This is wrong. 
+            // I have created hotOrder object and then passing hotOrder to itself to check! 
+            // I moved the VerifyInstruction to CoffeeMachine as it's a business rule and 
+            //CoffeeMachineGame coffeeMachine = new CoffeeMachineGame();
+            // HotOrder hotOrder = new HotOrder(drink, sugar);
+            // var result = hotOrder.VerifyInstruction(hotOrder);
+            
+           
+           // var result = coffeeMachine.VerifyInstruction(new Order(drink,sugar));
             Assert.Equal(true,result);
         }
+        
+        
+        
         
         [Theory]
         [InlineData("C","3")]
@@ -25,21 +39,22 @@ namespace CoffeeMachineTests
         public void DrinkMaker_Receive_InCorrect_Instructions_For_Drink_Order(string drink, string sugar)
         {
             CoffeeMachineGame coffeeMachine = new CoffeeMachineGame();
-            var result = coffeeMachine.VerifyInstruction(new Order(drink,sugar));
+            var result = coffeeMachine.VerifyInstruction(new HotOrder(drink,sugar));
             Assert.Equal(false,result);
         }
         
         
-        [Theory]
+        /*[Theory]
         [InlineData("C","1")]
         [InlineData("C","2")]
         public void DrinkMaker_Add_A_Stick_When_Order_Contains_Sugar(string drink, string sugar)
         {
             CoffeeMachineGame coffeeMachine = new CoffeeMachineGame();
-            var restul =  coffeeMachine.HasStick((new Order(drink,sugar)));
+            var restul =  coffeeMachine.HasStick((new HotOrder(drink,sugar)));
             Assert.Equal(true, restul);
-        }
+        }*/
         
+        /*
         [Theory]
         [InlineData("C","0")]
         public void DrinkMaker_Not_Add_A_Stick_When_Order_Contains_No_Sugar(string drink, string sugar)
@@ -47,8 +62,8 @@ namespace CoffeeMachineTests
             CoffeeMachineGame coffeeMachine = new CoffeeMachineGame();
             var restul =  coffeeMachine.HasStick((new Order(drink,sugar)));
             Assert.Equal(false, restul);
-        }
-        #endregion
+        }*/
+      
 
         #region Iteration two
         [Theory]
@@ -57,19 +72,13 @@ namespace CoffeeMachineTests
         [InlineData("H","2",0.6, "Hot Chocolate", 0.5)]
         public void Make_Drink_When_There_is_plenty_of_money(string drink, string sugar, double money, string expectedName, double expectedPrice)
         {
-            // Arrange or Setup
+            
            CoffeeMachineGame coffeeMachine = new CoffeeMachineGame();
            
-           // Act or Action
-           
-           // verifyOrder
-           // isMoneyEnough
-           
-           Drink madeDrink = coffeeMachine.TakeOrder(new Order(drink, sugar), money);
-           
-           // Assert or Expectation
-           Assert.Equal(madeDrink.GetName(), expectedName);
-           Assert.Equal(madeDrink.GetPrice(), expectedPrice);
+           var madeHotDrink = coffeeMachine.TakeOrder(new HotOrder(drink, sugar), money);
+        
+           Assert.Equal(madeHotDrink.GetName(), expectedName);
+           Assert.Equal(madeHotDrink.GetPrice(), expectedPrice);
            
         }
         
@@ -83,10 +92,33 @@ namespace CoffeeMachineTests
            CoffeeMachineGame coffeeMachine = new CoffeeMachineGame();
            
            // Assert or Expectation
-           Assert.Throws<InvalidMoneyException>( () => coffeeMachine.TakeOrder(new Order(drink, sugar), money));
+           Assert.Throws<InvalidMoneyException>( () => coffeeMachine.TakeOrder(new HotOrder(drink, sugar), money));
 
        }
  
         #endregion
+        
+        
+        
+        #region iteration three
+        [Theory]
+        [InlineData("O", 0.6, "Orange Juice",0.6)]
+        public void Make_Orange_Juice_Drink_When_There_is_plenty_of_money(string drink, double money, string expectedName, double expectedPrice)
+        {
+            
+            CoffeeMachineGame coffeeMachine = new CoffeeMachineGame();
+
+            var madeColdDrink = coffeeMachine.TakeOrder(new ColdOrder(drink), money);
+            
+          
+            Assert.Equal(madeColdDrink.GetName(), expectedName);
+            Assert.Equal(madeColdDrink.GetPrice(), expectedPrice);
+           
+        }
+        
+
+        #endregion
     }
+
+    
 }
