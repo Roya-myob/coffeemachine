@@ -10,13 +10,20 @@ namespace CoffeeMachine
         private string _drink;
         private string _sugar;
         private string _stick;
-       
-        
 
+        private DateTime? _soldDate;
+
+
+        public HotOrder(string drink, string sugar, DateTime soldDate): this(drink, sugar)
+        {
+            _soldDate = soldDate;
+        }
+            
         public HotOrder(string drink, string sugar)
         {
             _drink = drink;
             _sugar = sugar;
+            _soldDate = null;
           
             
             if (Int64.Parse(_sugar) > 0)
@@ -36,6 +43,11 @@ namespace CoffeeMachine
             return _sugar;
         }
 
+        public DateTime? GetSoldDate()
+        {
+            return _soldDate;
+        }
+
         private void UpdateStickField()
         {
             _stick = "0";
@@ -53,10 +65,12 @@ namespace CoffeeMachine
             return  r.IsMatch (drink);
         }
 
-        public bool VerifyInstruction(IOrder customerOrder)
+        /*public bool VerifyInstruction(IOrder customerOrder)
         {
             throw new NotImplementedException();
-        }
+        }*/
+        
+        
 
         public bool HasOrderedSugar()
         {

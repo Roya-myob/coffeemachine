@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 
 namespace CoffeeMachine
 {
@@ -27,10 +28,10 @@ namespace CoffeeMachine
             return  r.IsMatch (drink);
         }
 
-        public bool VerifyInstruction(IOrder customerOrder)
+        /*public bool VerifyInstruction(IOrder customerOrder)
         {
             throw new System.NotImplementedException();
-        }
+        }*/
 
         public bool HasOrderedSugar(IOrder customerOrder)
         {
@@ -40,6 +41,11 @@ namespace CoffeeMachine
         public string GetSugar()
         {
             throw new System.NotImplementedException();
+        }
+
+        public DateTime? GetSoldDate()
+        {
+            return null;
         }
     }
 }

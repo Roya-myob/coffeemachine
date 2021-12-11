@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Channels;
 using System.Transactions;
 
 namespace CoffeeMachine
 {
     public class CoffeeMachineGame
     {
+
+        
         private Drink ConvertOrderToDrink(IOrder customerOrder)
         {
             double price = 0.0;
@@ -45,6 +48,10 @@ namespace CoffeeMachine
 
             return false;
         }
+
+       
+        
+        
         
         public bool VerifyAmountIsPaid(IOrder customerOrder, double price, double amount)
         {
@@ -77,5 +84,7 @@ namespace CoffeeMachine
         {
         }
     }
+    
+    
     
 }

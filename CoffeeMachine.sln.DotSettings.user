@@ -24,7 +24,16 @@
     &lt;TestId&gt;xUnit::FF0F64C7-8739-43C6-A0DC-C537A86EA938::.NETCoreApp,Version=v3.1::CoffeeMachineTests.CoffeeMachineTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8f4a0b65_002Dc74f_002D4d0c_002Da1d6_002Db6e99a579c5f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="DrinkMaker_Add_A_Stick_When_Order_Contains_Sugar" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7bafc21f_002D5081_002D4656_002Da5a2_002Da0741be23670/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="DrinkMaker_Receive_Correct_Instructions_For_Drink_Order #5" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::FF0F64C7-8739-43C6-A0DC-C537A86EA938::.NETCoreApp,Version=v3.1::CoffeeMachineTests.CoffeeMachineTest.DrinkMaker_Receive_Correct_Instructions_For_Drink_Order&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FF0F64C7-8739-43C6-A0DC-C537A86EA938::.NETCoreApp,Version=v3.1::CoffeeMachineTests.ExtractProtocolTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FF0F64C7-8739-43C6-A0DC-C537A86EA938::.NETCoreApp,Version=v3.1::CoffeeMachineTests.CoffeeMachineTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FF0F64C7-8739-43C6-A0DC-C537A86EA938::.NETCoreApp,Version=v3.1::CoffeeMachineTests.ReportTest.DrinkMaker_Reports_How_Many_Of_Each_Drink_Was_Sold_And_Total_Amount_Of_Money_Earned&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FF0F64C7-8739-43C6-A0DC-C537A86EA938::.NETCoreApp,Version=v3.1::CoffeeMachineTests.ReportGeneratorTest.Generate_a_report_of_all_the_drinks_sold_for_a_given_day&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8f4a0b65_002Dc74f_002D4d0c_002Da1d6_002Db6e99a579c5f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="DrinkMaker_Add_A_Stick_When_Order_Contains_Sugar" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::FF0F64C7-8739-43C6-A0DC-C537A86EA938::.NETCoreApp,Version=v3.1::CoffeeMachineTests.CoffeeMachineTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
